@@ -1,0 +1,28 @@
+{
+  "name": "sharepoint-fabric",
+  "version": "0.0.0",
+  "authors": [
+    "Adrian <github@netzkind.org>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "office-ui-fabric": "~1.1.3",
+    "underscore": "~1.8.3",
+    "backbone": "~1.2.3",
+    "Backbone.SharePoint": "vadimi/Backbone.SharePoint",
+    "mustache.js": "mustache#~2.2.0"
+  }
+}
