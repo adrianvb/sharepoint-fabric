@@ -14,12 +14,12 @@ var gulp = require('gulp');
 var changed = require('gulp-changed');
 var newer = require('gulp-newer');
 var filesInStream = require('gulp-filesinstream');
-var watch = require('gulp-watch');
 
 var source = 'app/**';
 
 gulp.task('copy', function() {
-  var destination = 'Z:\\SiteAssets'
+  var destination = 'Z:\\SiteAssets';
+  destination = '/Volumes/gulp/SiteAssets/';
 
   return gulp.src(source)
       //.pipe(filesInStream(null, 'org'))
