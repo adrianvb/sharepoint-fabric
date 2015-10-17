@@ -56,6 +56,24 @@
 
     <script>
 
+			var Workspace = Backbone.Router.extend({
+
+				routes: {
+					"group/:query":        "search",  // #search/kiwis
+					"search/:query/p:page": "search",   // #search/kiwis/p7
+					'*path':								'defaultRoute'
+				},
+
+				defaultRoute: function() {
+					alert("oho!");
+				},
+
+				search: function(query, page) {
+					console.log('search', query, page);
+				}
+			});
+
+
 			var Service = Backbone.SP.Item.extend({
 				site: '/rechenzentrum/itsm',
 				list: 'Services',
@@ -65,10 +83,18 @@
 			var ServiceList = Backbone.SP.List.extend({
 				model: Service,
 
+				current_group: null,
+
 				groups: function() {
-					console.log(_.uniq(this.pluck('Klasse0')));
+					//console.log(_.uniq(this.pluck('Klasse0')));
 					return _.uniq(this.pluck('Klasse0'));
+				},
+
+				byGroup: function(group) {
+					return this.where({ Klasse0: group })
 				}
+
+
 			});
 
 			var Services = new ServiceList;
@@ -78,7 +104,12 @@
     		tpl:'{{#services}}<li>{{Title}}</li>{{/services}}',
 		    render: function () {
 						//console.log(this.collection.toJSON());
-		        $(this.el).html(Mustache.render(this.tpl, { services: this.collection.toJSON() }));
+		        $(this.el).html(
+							Mustache.render(
+								this.tpl,
+								{ services: this.collection.toJSON() }
+							)
+						);
 		        $('#my-container').append(this.el);
 		    },
 
@@ -94,6 +125,19 @@
 		var PivotView = Backbone.View.extend({
 			tagName: "ul",
 			tpl: $('#pivot-template').html(),
+
+			events: {
+				'click .ms-Pivot-link': 'navigate'
+			},
+
+			navigate: function(e) {
+				var current_node = e.target.textContent;
+				router.navigate('group/' + current_node, {trigger: true});
+
+				console.log(current_node, router);
+
+			},
+
 			render: function () {
 					//console.log(this.collection.toJSON());
 					$(this.el).html(Mustache.render(this.tpl, { groups: this.collection.groups() }));
@@ -107,10 +151,12 @@
 			}
 		});
 
+
 		var view = new ServicesView({ collection: Services });
 		var pivotView = new PivotView({ collection: Services });
 
-		console.log('fetching');
+		var router = new Workspace();
+
 		Services.fetch()
     </script>
 
