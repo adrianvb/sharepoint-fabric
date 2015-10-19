@@ -24,5 +24,20 @@
     "backbone": "~1.2.3",
     "Backbone.SharePoint": "vadimi/Backbone.SharePoint",
     "mustache.js": "mustache#~2.2.0"
+  },
+  "overrides": {
+    "office-ui-fabric": {
+      "main": [
+          "dist/css/fabric.components.css",
+          "dist/css/fabric.css",
+          "dist/js/jquery.fabric.js"
+        ]
+    },
+    "Backbone.SharePoint": {
+      "main": [
+          "backbone-sharepoint.odata.js",
+          "backbone-sharepoint.soap.js"
+        ]
+    }
   }
 }

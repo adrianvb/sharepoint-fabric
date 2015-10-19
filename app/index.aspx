@@ -8,13 +8,13 @@
 <asp:Content ContentPlaceHolderId="PlaceHolderAdditionalPageHead" runat="server">
 	<meta name="CollaborationServer" content="SharePoint Team Web Site" />
 
-  <script type="text/javascript" src="scripts/jquery.min.js"></script>
+  <script type="text/javascript" src="vendor/jquery.js"></script>
   <script type="text/javascript" src="scripts/jquery.pivot.js"></script>
-	<script type="text/javascript" src="scripts/underscore-min.js"></script>
+	<script type="text/javascript" src="vendor/underscore.js"></script>
 
-	<script type="text/javascript" src="scripts/backbone-min.js"></script>
-	<script type="text/javascript" src="scripts/backbone-sharepoint.odata.js"></script>
-	<script type="text/javascript" src="scripts/mustache.min.js"></script>
+	<script type="text/javascript" src="vendor/backbone.js"></script>
+	<script type="text/javascript" src="vendor/backbone-sharepoint.odata.js"></script>
+	<script type="text/javascript" src="vendor/mustache.js"></script>
 
 	<SharePoint:ScriptBlock runat="server">
 		var navBarHelpOverrideKey = "WSSEndUser";
@@ -32,8 +32,8 @@
     <!-- Optionally include jQuery to use Fabric's Component jQuery plugins -->
 
     <!-- Fabric core -->
-    <link rel="stylesheet" href="styles/fabric.min.css">
-    <link rel="stylesheet" href="styles/fabric.components.min.css">
+    <link rel="stylesheet" href="vendor/fabric.css">
+    <link rel="stylesheet" href="vendor/fabric.components.css">
 
 		<span id="browser-sync-binding"></span>
 		<!-- Application content goes here -->
@@ -49,7 +49,7 @@
 				<li class="ms-Pivot-link ms-Pivot-link--overflow">
 					<i class="ms-Pivot-ellipsis ms-Icon ms-Icon--ellipsis"></i>
 				</li>
-			</ul>
+			</ul> 
 		</script>
 
 		<div id="my-container"></div>
