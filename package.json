@@ -16,6 +16,9 @@
   "dependencies": {
     "gulp-newer": "~0.5.1",
     "gulp-changed": "~1.3.0",
-    "gulp-filesinstream": "~0.9.3"
+    "gulp-filesinstream": "~0.9.3",
+    "main-bower-files": "~2.9.0",
+    "gulp-jslint": "~0.2.2",
+    "gulp-rimraf": "~0.2.0"
   }
 }
