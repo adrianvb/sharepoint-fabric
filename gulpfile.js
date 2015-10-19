@@ -21,8 +21,8 @@ var rimraf = require('gulp-rimraf');
 var source = 'app/**';
 
 gulp.task('copy-to-sharepoint', function() {
-  var destination = 'Z:\\SiteAssets';
-  destination = '/Volumes/gulp/SiteAssets/';
+  var destination = 'Z:\\ServiceApp';
+  //destination = '/Volumes/gulp/SiteAssets/';
 
   return gulp.src('dist/**')
       //.pipe(filesInStream(null, 'org'))

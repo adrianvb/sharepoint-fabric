@@ -1,0 +1,37 @@
+<div ng-controller="ServiceListCtrl">
+
+  <h1 class="ms-font-su">Services ({{services.length}})</h1>
+
+  <div class="ms-SearchBox">
+    <input class="ms-SearchBox-field" ng-model="searchText">
+    <label class="ms-SearchBox-label" style="display: block;"><i class="ms-SearchBox-icon ms-Icon ms-Icon--search"></i>Search</label>
+    <button class="ms-SearchBox-closeButton"><i class="ms-Icon ms-Icon--x"></i></button>
+  </div>
+
+  <ul class="ms-Pivot ms-Pivot--large">
+    <li class="ms-Pivot-link" ng-click="filters = {}">Alle Services</li>
+    <li class="ms-Pivot-link" ng-repeat="service in services | unique:'Klasse0'" ng-click="filters.Klasse0 = service.Klasse0">{{service.Klasse0}}</li>
+    <li class="ms-Pivot-link ms-Pivot-link--overflow">
+      <i class="ms-Pivot-ellipsis ms-Icon ms-Icon--ellipsis"></i>
+    </li>
+  </ul> 
+
+
+  <ul class="ms-List ms-List--grid">
+    <div class="ms-ListItem is-unread is-selectable" ng-repeat="service in services | filter:searchText | filter:filters">
+      <span class="ms-ListItem-primaryText"><a href="#/services/{{service.Id}}">{{service.Title}}</a></span>
+      <span class="ms-ListItem-secondaryText">{{service.Klasse0}}</span>
+      <span class="ms-ListItem-tertiaryText">{{service.ServiceBeschreibung}}</span>
+      <span class="ms-ListItem-metaText">{{service.Modified}}</span>
+      <div class="ms-ListItem-selectionTarget js-toggleSelection"></div>
+      <div class="ms-ListItem-actions">
+        <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--pinLeft"></i></div>
+      </div>
+    </div>
+  </ul>
+</div>
+
+<script>
+  $('.ms-SearchBox').SearchBox();
+  $('.ms-Pivot').Pivot();
+</script>

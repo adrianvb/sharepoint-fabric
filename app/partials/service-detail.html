@@ -1,0 +1,22 @@
+<div ng-controller="ServiceDetailCtrl">
+
+  <div class="ms-Breadcrumb">
+    <a href="#/services" class="ms-Breadcrumb-parent">Services</a>
+    >
+    <span class="ms-Breadcrumb-current">{{service.Title}}</span>
+  </div>
+
+
+  <div class="ms-Grid">
+  <div class="ms-Grid-row">
+    <div class="ms-Grid-colms-u-lg10">
+      <h1>{{service.Title}}</h1>
+      <p>{{service.ServiceBeschreibung}}</p>
+    </div>
+    <div class="ms-Grid-colms-u-lg2">
+      <ul>
+        <li ng-repeat="similarService in similarServices">{{similarService.Title}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
