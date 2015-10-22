@@ -9,8 +9,8 @@
 	<meta name="CollaborationServer" content="SharePoint Team Web Site" />
 	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 
-  <script type="text/javascript" src="vendor/jquery.js"></script>
-  <script type="text/javascript" src="scripts/jquery.pivot.js"></script>
+  	<script type="text/javascript" src="vendor/jquery.js"></script>
+  	<script type="text/javascript" src="scripts/jquery.pivot.js"></script>
 	<script type="text/javascript" src="scripts/jquery.personacard.js"></script>
 	<script type="text/javascript" src="scripts/jquery.searchbox.js"></script>
 
@@ -47,8 +47,7 @@
 
 		<!-- Application content goes here -->
 
-		<div ng-app="servicesApp">
-
+		<div ng-app="servicesApp" id="services-app">
 			<div ng-view></div>
 		</div>
 </asp:Content>

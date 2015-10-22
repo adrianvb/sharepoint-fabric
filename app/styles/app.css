@@ -124,3 +124,23 @@
   font-size: 17px;
   color: #767676;
 }
+
+#services-app .service-field {
+    padding-bottom: 5px;
+}
+
+#services-app .service-listitem {
+    width: 600px;
+    cursor: pointer;
+}
+
+.service-listitem .service-listitem-description {
+    position: relative;
+    top: -7px;
+    color: #767676;
+    cursor: zoom-out;
+}
+
+.service-listitem .ms-ListItem-tertiaryText {
+    cursor: zoom-in;
+}
