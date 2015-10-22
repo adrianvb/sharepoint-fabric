@@ -7,14 +7,23 @@
 
 <asp:Content ContentPlaceHolderId="PlaceHolderAdditionalPageHead" runat="server">
 	<meta name="CollaborationServer" content="SharePoint Team Web Site" />
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
 
-  <script type="text/javascript" src="vendor/jquery.js"></script>
-  <script type="text/javascript" src="scripts/jquery.pivot.js"></script>
-	<script type="text/javascript" src="vendor/underscore.js"></script>
+  	<script type="text/javascript" src="vendor/jquery.js"></script>
+  	<script type="text/javascript" src="scripts/jquery.pivot.js"></script>
+	<script type="text/javascript" src="scripts/jquery.personacard.js"></script>
+	<script type="text/javascript" src="scripts/jquery.searchbox.js"></script>
 
-	<script type="text/javascript" src="vendor/backbone.js"></script>
-	<script type="text/javascript" src="vendor/backbone-sharepoint.odata.js"></script>
-	<script type="text/javascript" src="vendor/mustache.js"></script>
+	<script type="text/javascript" src="vendor/ShareCoffee.min.js"></script>
+
+	<script type="text/javascript" src="vendor/angular.js"></script>
+	<script type="text/javascript" src="vendor/angular-route.js"></script>
+	<script type="text/javascript" src="vendor/angular-filter.min.js"></script>
+	<script type="text/javascript" src="vendor/angular-sharepoint.js"></script>
+
+	<script type="text/javascript" src="scripts/app.js"></script>
+
+	<link rel="stylesheet" href="styles/app.css" />
 
 	<SharePoint:ScriptBlock runat="server">
 		var navBarHelpOverrideKey = "WSSEndUser";
@@ -35,131 +44,10 @@
     <link rel="stylesheet" href="vendor/fabric.css">
     <link rel="stylesheet" href="vendor/fabric.components.css">
 
-		<span id="browser-sync-binding"></span>
+
 		<!-- Application content goes here -->
-		<h1 class="ms-font-su">Why, hello, world.</h1>
 
-		<div id="pivot-container"></div>
-
-		<script id="pivot-template" type="x-tmpl-mustache">
-			<ul class="ms-Pivot ms-Pivot--large">
-				{{#groups}}
-				<li class="ms-Pivot-link">{{.}}</li>
-				{{/groups}}
-				<li class="ms-Pivot-link ms-Pivot-link--overflow">
-					<i class="ms-Pivot-ellipsis ms-Icon ms-Icon--ellipsis"></i>
-				</li>
-			</ul> 
-		</script>
-
-		<div id="my-container"></div>
-
-    <script>
-
-			var Workspace = Backbone.Router.extend({
-
-				routes: {
-					"group/:query":        "search",  // #search/kiwis
-					"search/:query/p:page": "search",   // #search/kiwis/p7
-					'*path':								'defaultRoute'
-				},
-
-				defaultRoute: function() {
-					alert("oho!");
-				},
-
-				search: function(query, page) {
-					console.log('search', query, page);
-				}
-			});
-
-
-			var Service = Backbone.SP.Item.extend({
-				site: '/rechenzentrum/itsm',
-				list: 'Services',
-			});
-
-
-			var ServiceList = Backbone.SP.List.extend({
-				model: Service,
-
-				current_group: null,
-
-				groups: function() {
-					//console.log(_.uniq(this.pluck('Klasse0')));
-					return _.uniq(this.pluck('Klasse0'));
-				},
-
-				byGroup: function(group) {
-					return this.where({ Klasse0: group })
-				}
-
-
-			});
-
-			var Services = new ServiceList;
-
-			var ServicesView = Backbone.View.extend({
-    		tagName: "ul",
-    		tpl:'{{#services}}<li>{{Title}}</li>{{/services}}',
-		    render: function () {
-						//console.log(this.collection.toJSON());
-		        $(this.el).html(
-							Mustache.render(
-								this.tpl,
-								{ services: this.collection.toJSON() }
-							)
-						);
-		        $('#my-container').append(this.el);
-		    },
-
-				initialize: function() {
-					console.log('view init');
-					this.listenTo(Services, 'reset', this.render);
-					this.listenTo(Services, 'all', this.render);
-				}
-
-
-		});
-
-		var PivotView = Backbone.View.extend({
-			tagName: "ul",
-			tpl: $('#pivot-template').html(),
-
-			events: {
-				'click .ms-Pivot-link': 'navigate'
-			},
-
-			navigate: function(e) {
-				var current_node = e.target.textContent;
-				router.navigate('group/' + current_node, {trigger: true});
-
-				console.log(current_node, router);
-
-			},
-
-			render: function () {
-					//console.log(this.collection.toJSON());
-					$(this.el).html(Mustache.render(this.tpl, { groups: this.collection.groups() }));
-					$('#pivot-container').append(this.el);
-			},
-
-			initialize: function() {
-				console.log('view init');
-				this.listenTo(Services, 'reset', this.render);
-				this.listenTo(Services, 'all', this.render);
-			}
-		});
-
-
-		var view = new ServicesView({ collection: Services });
-		var pivotView = new PivotView({ collection: Services });
-
-		var router = new Workspace();
-
-		Services.fetch()
-    </script>
-
-
-
+		<div ng-app="servicesApp" id="services-app">
+			<div ng-view></div>
+		</div>
 </asp:Content>

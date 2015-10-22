@@ -1,0 +1,24 @@
+<div class="ms-Grid">
+    <div class="ms-Grid-col ms-u-sm9 ms-u-md9 ms-u-lg9">
+        <h1 class="ms-">{{service.Title}}</h1>
+
+        <service-field field="service.Title" label="'Service'"></service-field>
+        <service-field field="service.Klasse0" label="'Klasse'"></service-field>
+        <service-field field="service.ServiceStatus" label="'Status'"></service-field>
+        <service-field field="service.ServiceBeschreibung" label="'Beschreibung'"></service-field>
+        <service-field field="service.Bemerkung0" label="'Bemerkung'"></service-field>
+        <service-field field="service.Optionen0" label="'Optionen'"></service-field>
+        <service-field field="service.Anwenderinnen.results" label="'Anwendergruppen'"></service-field>
+        <service-field field="service.Auspraegungen0" label="'Auspraegungen'"></service-field>
+        <service-field field="service.ServiceZeiten0" label="'Service Zeiten'"></service-field>
+        <service-field field="service.VoraussetzungenKundenseite0" label="'Voraussetzungen Kundenseite'"></service-field>
+        <service-field field="service.Wartungsfenster0" label="'Wartungsfenster'"></service-field>
+    </div>
+    <div class="ms-Grid-col ms-u-sm3 ms-u-md3 ms-u-lg3" ng-show="similarServices">
+        <h2 class="ms-font-xl">Services der selben Klasse</h2>
+        <ul>
+            <li ng-repeat="similarService in similarServices">
+                <a href="#/services/{{similarService.Id}}">{{similarService.Title}}</a></li>
+        </ul>
+    </div>
+</div>

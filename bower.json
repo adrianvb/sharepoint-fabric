@@ -23,21 +23,25 @@
     "underscore": "~1.8.3",
     "backbone": "~1.2.3",
     "Backbone.SharePoint": "vadimi/Backbone.SharePoint",
-    "mustache.js": "mustache#~2.2.0"
+    "mustache.js": "mustache#~2.2.0",
+    "angular": "~1.4.7",
+    "angular-sharepoint": "~0.3.4",
+    "angular-route": "~1.4.7",
+    "angular-filter": "~0.5.7"
   },
   "overrides": {
     "office-ui-fabric": {
       "main": [
-          "dist/css/fabric.components.css",
-          "dist/css/fabric.css",
-          "dist/js/jquery.fabric.js"
-        ]
+        "dist/css/fabric.components.css",
+        "dist/css/fabric.css",
+        "dist/js/jquery.fabric.js"
+      ]
     },
     "Backbone.SharePoint": {
       "main": [
-          "backbone-sharepoint.odata.js",
-          "backbone-sharepoint.soap.js"
-        ]
+        "backbone-sharepoint.odata.js",
+        "backbone-sharepoint.soap.js"
+      ]
     }
   }
 }

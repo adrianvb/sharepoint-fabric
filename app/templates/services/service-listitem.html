@@ -1,0 +1,10 @@
+<div class="ms-ListItem service-listitem">
+    <span class="ms-ListItem-primaryText"><span class="ms-fontColor-themePrimary ">{{primary}}</span></span>
+    <span class="ms-ListItem-secondaryText">{{secondary}}</span>
+    <span class="ms-ListItem-tertiaryText" ng-click="toggleDescription($event)" ng-hide="showDescription">{{tertiary}}</span>
+    <span class="ms-ListItem-metaText">{{meta}}</span>
+
+    <div class="service-listitem-description" ng-click="toggleDescription($event)" ng-show="showDescription">
+        {{tertiary}}
+    </div>
+</div>

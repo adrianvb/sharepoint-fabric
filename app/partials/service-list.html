@@ -1,0 +1,39 @@
+<div>
+
+  <h1 class="ms-font-su">Services</h1>
+
+  <div class="ms-SearchBox">
+    <input class="ms-SearchBox-field" ng-model="searchText">
+    <label class="ms-SearchBox-label" style="display: block;"><i class="ms-SearchBox-icon ms-Icon ms-Icon--search"></i>Search</label>
+    <button class="ms-SearchBox-closeButton"><i class="ms-Icon ms-Icon--x"></i></button>
+  </div>
+
+  <ul class="ms-Pivot ms-Pivot--small">
+    <li class="ms-Pivot-link is-selected" ng-click="filters = {}">Alle Services</li>
+    <li class="ms-Pivot-link" ng-repeat="service in services | unique:'Klasse0'" ng-click="filters.Klasse0 = service.Klasse0">{{service.Klasse0}}</li>
+  </ul>
+
+    <ul class="ms-List ms-List--grid" ng-hide="(services | filter:searchText | filter:filters).length == 1">
+        <service-listitem
+            ng-repeat="service in services | filter:searchText | filter:filters"
+            ng-click="OpenDetailView(service.Id)"
+
+            primary="service.Title"
+            secondary="service.Klasse0"
+            tertiary="service.ServiceBeschreibung"
+            meta="service.Modified | date:'dd.MM.yyyy HH:mm'">
+        </service-listitem>
+    </ul>
+
+    <service-detail service="(services | filter:searchText | filter:filters)[0]" ng-show="(services | filter:searchText | filter:filters).length == 1"></service-detail>
+
+    <div ng-show="(services | filter:searchText | filter:filters).length == 0" class="ms-font-xl ms-fontColor-alert">
+        <i class="ms-Icon ms-Icon--alert"></i>
+        <span ng-show="filters.Klasse0">zu der Suche in '{{filters.Klasse0}}'</span> mit dem Suchbegriff '{{searchText}}' wurden keine Services gefunden.
+    </div>
+</div>
+
+<script>
+  $('.ms-SearchBox').SearchBox();
+  $('.ms-Pivot').Pivot();
+</script>
