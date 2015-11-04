@@ -44,10 +44,9 @@
     <link rel="stylesheet" href="vendor/fabric.css">
     <link rel="stylesheet" href="vendor/fabric.components.css">
 
+	<!-- Application content goes here -->
 
-		<!-- Application content goes here -->
-
-		<div ng-app="servicesApp" id="services-app">
-			<div ng-view></div>
-		</div>
+	<div ng-app="servicesApp" id="services-app">
+		<div ng-view></div>
+	</div>
 </asp:Content>
